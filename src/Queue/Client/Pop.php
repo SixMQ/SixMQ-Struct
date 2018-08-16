@@ -12,4 +12,10 @@ class Pop extends BaseClientStruct
 	 */
 	public $queueId;
 	
+	/**
+	 * 消息处理，最大超时时间
+	 *
+	 * @var int
+	 */
+	public $maxExpire;
 }

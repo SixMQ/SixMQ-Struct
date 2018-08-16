@@ -1,9 +1,9 @@
 <?php
 namespace SixMQ\Struct\Queue\Server;
 
-use SixMQ\Struct\BaseServerStruct;
+use SixMQ\Struct\Queue\Server\Reply;
 
-class Pop extends BaseServerStruct
+class Pop extends Reply
 {
 	/**
 	 * 队列ID

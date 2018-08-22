@@ -20,9 +20,8 @@ class Reply extends BaseServerStruct
 	 */
 	public $flag;
 
-	public function __construct($flag, $success = true, $operation = Operation::REPLY)
+	public function __construct($success = true, $operation = Operation::REPLY)
 	{
-		$this->flag = $flag;
 		$this->success = $success;
 		$this->operation = $operation;
 	}

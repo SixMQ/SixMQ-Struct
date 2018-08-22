@@ -19,4 +19,10 @@ class Push extends BaseClientStruct
 	 */
 	public $data;
 	
+	public function __construct($queueId, $data)
+	{
+		$this->action = 'queue.push';
+		$this->queueId = $queueId;
+		$this->data = $data;
+	}
 }

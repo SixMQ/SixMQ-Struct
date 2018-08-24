@@ -1,6 +1,6 @@
 
 {
-	"name": "yurunsoft/sixmq-struct",
+	"name": "sixmq/sixmq-struct",
 	"type": "library",
     "license": "Apache-2.0",
 	"description": "SixMQ 数据结构",

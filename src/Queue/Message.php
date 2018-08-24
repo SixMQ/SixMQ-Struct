@@ -39,6 +39,13 @@ class Message
 	public $inTime;
 
 	/**
+	 * 消息是否被消费完成
+	 *
+	 * @var boolean
+	 */
+	public $consum = false;
+	
+	/**
 	 * 消息是否成功消费
 	 *
 	 * @var boolean

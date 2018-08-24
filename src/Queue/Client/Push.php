@@ -19,10 +19,21 @@ class Push extends BaseClientStruct
 	 */
 	public $data;
 	
-	public function __construct($queueId, $data)
+	/**
+	 * 是否阻塞等待返回
+	 * 0：默认，立即返回
+	 * 小于0：阻塞等待，不限制时长
+	 * 大于0：阻塞等待时长，单位：秒
+	 *
+	 * @var float
+	 */
+	public $block;
+
+	public function __construct($queueId, $data, $block = 0)
 	{
 		$this->action = 'queue.push';
 		$this->queueId = $queueId;
 		$this->data = $data;
+		$this->block = $block;
 	}
 }

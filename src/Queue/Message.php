@@ -60,16 +60,23 @@ class Message
 	public $resultData;
 
 	/**
-	 * 消息超时时间
+	 * 消费失败重试次数
 	 *
 	 * @var int
 	 */
-	public $expireTime;
+	public $retry;
+
+	/**
+	 * 消息超时时间，单位：秒
+	 *
+	 * @var float
+	 */
+	public $timeout;
 
 	public function __construct($data, $messageId)
 	{
 		$this->data = $data;
 		$this->messageId = $messageId;
-		$this->inTime = $this->firstInTime = time();
+		$this->inTime = $this->firstInTime = microtime(true);
 	}
 }

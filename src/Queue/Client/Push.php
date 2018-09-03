@@ -29,11 +29,28 @@ class Push extends BaseClientStruct
 	 */
 	public $block;
 
-	public function __construct($queueId, $data, $block = 0)
+	/**
+	 * 消费失败重试次数
+	 *
+	 * @var integer
+	 */
+	public $retry;
+
+	/**
+	 * 超时时间，单位：秒，-1则为不限制
+	 * 超过超时时间则从队列中移除
+	 *
+	 * @var float
+	 */
+	public $timeout;
+
+	public function __construct($queueId, $data, $block = 0, $timeout = -1, $retry = 3)
 	{
 		$this->action = 'queue.push';
 		$this->queueId = $queueId;
 		$this->data = $data;
 		$this->block = $block;
+		$this->retry = $retry;
+		$this->timeout = $timeout;
 	}
 }

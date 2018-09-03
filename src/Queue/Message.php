@@ -59,6 +59,13 @@ class Message
 	 */
 	public $resultData;
 
+	/**
+	 * 消息超时时间
+	 *
+	 * @var int
+	 */
+	public $expireTime;
+
 	public function __construct($data, $messageId)
 	{
 		$this->data = $data;

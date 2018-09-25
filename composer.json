@@ -1,17 +1,17 @@
 
 {
-	"name": "sixmq/sixmq-struct",
-	"type": "library",
+    "name": "sixmq/sixmq-struct",
+    "type": "library",
     "license": "Apache-2.0",
-	"description": "SixMQ 数据结构",
+    "description": "SixMQ 数据结构",
     "require": {
-		
+        
     },
     "require-dev": {
     },
     "autoload": {
         "psr-4" : {
-			"SixMQ\\Struct\\" : "src/"
+            "SixMQ\\Struct\\" : "src/"
         }
     }
 }

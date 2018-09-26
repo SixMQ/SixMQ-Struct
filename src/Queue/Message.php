@@ -27,14 +27,14 @@ class Message
     /**
      * 消息首次入库时间戳
      *
-     * @var int
+     * @var float
      */
     public $firstInTime;
 
     /**
      * 消息最后一次入库时间
      *
-     * @var int
+     * @var float
      */
     public $inTime;
 
@@ -72,6 +72,20 @@ class Message
      * @var float
      */
     public $timeout;
+
+	/**
+	 * 延迟执行的秒数，支持小数
+	 *
+	 * @var float
+	 */
+    public $delay;
+
+    /**
+     * 延迟后允许执行的时间，时间戳
+     *
+     * @var float
+     */
+    public $delayRunTime;
 
     public function __construct($data, $messageId)
     {

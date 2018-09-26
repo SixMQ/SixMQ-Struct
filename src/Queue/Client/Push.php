@@ -27,14 +27,14 @@ class Push extends BaseClientStruct
      *
      * @var float
      */
-    public $block;
+    public $block = 0;
 
     /**
      * 消费失败重试次数
      *
      * @var integer
      */
-    public $retry;
+    public $retry = 0;
 
     /**
      * 超时时间，单位：秒，-1则为不限制
@@ -42,15 +42,24 @@ class Push extends BaseClientStruct
      *
      * @var float
      */
-    public $timeout;
+	public $timeout = -1;
 
-    public function __construct($queueId, $data, $block = 0, $timeout = -1, $retry = 3)
+	/**
+	 * 延迟执行的秒数，支持小数
+	 *
+	 * @var float
+	 */
+	public $delay;
+	
+    public function __construct($queueId, $data, $options = [])
     {
         $this->action = 'queue.push';
         $this->queueId = $queueId;
         $this->data = $data;
-        $this->block = $block;
-        $this->retry = $retry;
-        $this->timeout = $timeout;
-    }
+        foreach($options as $k => $v)
+        {
+            $this->$k = $v;
+        }
+	}
+	
 }

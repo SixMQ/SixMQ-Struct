@@ -25,6 +25,13 @@ class Message
     public $data;
 
     /**
+     * 消息分组Id
+     *
+     * @var string
+     */
+    public $groupId;
+
+    /**
      * 消息首次入库时间戳
      *
      * @var float

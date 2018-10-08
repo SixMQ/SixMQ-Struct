@@ -20,6 +20,13 @@ class Push extends BaseClientStruct
     public $data;
     
     /**
+     * 消息分组Id
+     *
+     * @var string
+     */
+    public $groupId;
+    
+    /**
      * 是否阻塞等待返回
      * 0：默认，立即返回
      * 小于0：阻塞等待，不限制时长

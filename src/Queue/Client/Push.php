@@ -41,7 +41,7 @@ class Push extends BaseClientStruct
      *
      * @var integer
      */
-    public $retry = 0;
+    public $retry = 3;
 
     /**
      * 超时时间，单位：秒，-1则为不限制

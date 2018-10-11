@@ -17,4 +17,9 @@ abstract class GroupMessageStatus
      * 已完成
      */
     const COMPLETE = 2;
+
+    /**
+     * 取消
+     */
+    const CANCEL = 3;
 }

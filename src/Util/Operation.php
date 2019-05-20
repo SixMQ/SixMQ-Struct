@@ -1,10 +1,13 @@
 <?php
 namespace SixMQ\Struct\Util;
 
-abstract class Operation
+use Imi\Enum\BaseEnum;
+use Imi\Enum\Annotation\EnumItem;
+
+class Operation extends BaseEnum
 {
     /**
-     * 操作回复
+     * @EnumItem("操作回复")
      */
     const REPLY = 'reply';
 

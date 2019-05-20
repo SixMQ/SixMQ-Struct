@@ -8,6 +8,7 @@
         
     },
     "require-dev": {
+        "yurunsoft/imi": "dev-dev"
     },
     "autoload": {
         "psr-4" : {

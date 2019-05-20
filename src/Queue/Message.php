@@ -1,8 +1,12 @@
 <?php
 namespace SixMQ\Struct\Queue;
 
+use SixMQ\Struct\Util\ObjectToArray\TObjectToArray;
+
 class Message
 {
+    use TObjectToArray;
+
     /**
      * 队列ID
      *
@@ -100,4 +104,5 @@ class Message
         $this->messageId = $messageId;
         $this->inTime = $this->firstInTime = microtime(true);
     }
+
 }

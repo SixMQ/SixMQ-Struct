@@ -8,15 +8,21 @@ trait TObjectToArray
      *
      * @var array
      */
-    private $propertyInfos = null;
+    private static $propertyInfos = null;
 
+    /**
+     * 从存储中加载数据到对象
+     *
+     * @param array $data
+     * @return static
+     */
     public static function loadFromStore($data)
     {
-        if(null === $this->propertyInfos)
+        if(null === static::$propertyInfos)
         {
             $this->loadPropertyInfos();
         }
-        foreach($this->propertyInfos as $name => $option)
+        foreach(static::$propertyInfos as $name => $option)
         {
             if(isset($data[$name]))
             {
@@ -52,12 +58,12 @@ trait TObjectToArray
      */
     public function toArray(): array
     {
-        if(null === $this->propertyInfos)
+        if(null === static::$propertyInfos)
         {
             $this->loadPropertyInfos();
         }
         $data = [];
-        foreach($this->propertyInfos as $name => $option)
+        foreach(static::$propertyInfos as $name => $option)
         {
             $value = $this->$name;
             if(PropertyType::OTHER === $option['type'])
@@ -69,19 +75,30 @@ trait TObjectToArray
         return $data;
     }
 
+    /**
+     * 加载属性信息
+     *
+     * @return void
+     */
     private function loadPropertyInfos()
     {
-        $this->propertyInfos = [];
+        static::$propertyInfos = [];
         $refClass = new \ReflectionClass($this);
         foreach($refClass->getProperties(\ReflectionProperty::IS_PUBLIC) as $property)
         {
             $type = $this->getPropertyType($property);
-            $this->propertyInfos[$property->name] = [
+            static::$propertyInfos[$property->name] = [
                 'type'  =>  $type,
             ];
         }
     }
 
+    /**
+     * 获取属性类型
+     *
+     * @param \ReflectionProperty $property
+     * @return int
+     */
     private function getPropertyType(\ReflectionProperty $property)
     {
         $comment = $property->getDocComment();

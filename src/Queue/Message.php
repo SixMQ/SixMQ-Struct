@@ -72,6 +72,13 @@ class Message
     public $status = MessageStatus::FREE;
 
     /**
+     * 原始状态
+     *
+     * @var int
+     */
+    protected $originStatus = MessageStatus::FREE;
+
+    /**
      * 消费结果数据
      *
      * @var mixed
@@ -111,6 +118,29 @@ class Message
         $this->data = $data;
         $this->messageId = $messageId;
         $this->inTime = $this->firstInTime = microtime(true);
+    }
+
+    
+    /**
+     * 从存储中加载数据到对象
+     *
+     * @param array $data
+     * @return static
+     */
+    public static function loadFromStore($data)
+    {
+        $object = parent::loadFromStore($data);
+        $object->originStatus = $object->status;
+    }
+
+    /**
+     * 获取原始状态
+     *
+     * @return int
+     */
+    public function getOriginStatus()
+    {
+        return $this->originStatus;
     }
 
 }

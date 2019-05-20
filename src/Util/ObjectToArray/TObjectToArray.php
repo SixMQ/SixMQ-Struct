@@ -20,8 +20,9 @@ trait TObjectToArray
     {
         if(null === static::$propertyInfos)
         {
-            $this->loadPropertyInfos();
+            static::loadPropertyInfos();
         }
+        $object = new static;
         foreach(static::$propertyInfos as $name => $option)
         {
             if(isset($data[$name]))
@@ -48,8 +49,9 @@ trait TObjectToArray
             {
                 $value = null;
             }
-            $this->$name = $value;
+            $object->$name = $value;
         }
+        return $object;
     }
 
     /**
@@ -60,7 +62,7 @@ trait TObjectToArray
     {
         if(null === static::$propertyInfos)
         {
-            $this->loadPropertyInfos();
+            static::loadPropertyInfos();
         }
         $data = [];
         foreach(static::$propertyInfos as $name => $option)
@@ -80,13 +82,13 @@ trait TObjectToArray
      *
      * @return void
      */
-    private function loadPropertyInfos()
+    private static function loadPropertyInfos()
     {
         static::$propertyInfos = [];
-        $refClass = new \ReflectionClass($this);
+        $refClass = new \ReflectionClass(static::class);
         foreach($refClass->getProperties(\ReflectionProperty::IS_PUBLIC) as $property)
         {
-            $type = $this->getPropertyType($property);
+            $type = static::getPropertyType($property);
             static::$propertyInfos[$property->name] = [
                 'type'  =>  $type,
             ];
@@ -99,7 +101,7 @@ trait TObjectToArray
      * @param \ReflectionProperty $property
      * @return int
      */
-    private function getPropertyType(\ReflectionProperty $property)
+    private static function getPropertyType(\ReflectionProperty $property)
     {
         $comment = $property->getDocComment();
         if(preg_match('/@var\s+([\S]+)/', $comment, $matches) > 0)

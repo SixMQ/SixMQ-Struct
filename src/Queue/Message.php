@@ -98,7 +98,7 @@ class Message
      */
     public $delayRunTime;
 
-    public function __construct($data, $messageId)
+    public function __construct($data = null, $messageId = null)
     {
         $this->data = $data;
         $this->messageId = $messageId;

@@ -2,6 +2,7 @@
 namespace SixMQ\Struct\Queue;
 
 use SixMQ\Struct\Util\ObjectToArray\TObjectToArray;
+use SixMQ\Struct\Util\MessageStatus;
 
 class Message
 {
@@ -62,6 +63,13 @@ class Message
      * @var boolean
      */
     public $success = false;
+
+    /**
+     * 消息状态
+     *
+     * @var int
+     */
+    public $status = MessageStatus::FREE;
 
     /**
      * 消费结果数据

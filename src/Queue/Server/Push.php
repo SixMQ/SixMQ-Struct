@@ -20,7 +20,7 @@ class Push extends Reply
     public $messageId;
     
     /**
-     * 消息是否被消费完成
+     * 消息是否被消费过
      *
      * @var boolean
      */

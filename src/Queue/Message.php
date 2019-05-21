@@ -6,7 +6,9 @@ use SixMQ\Struct\Util\MessageStatus;
 
 class Message
 {
-    use TObjectToArray;
+    use TObjectToArray{
+        loadFromStore as tLoadFromStore;
+    }
 
     /**
      * 队列ID
@@ -129,8 +131,9 @@ class Message
      */
     public static function loadFromStore($data)
     {
-        $object = parent::loadFromStore($data);
+        $object = static::tLoadFromStore($data);
         $object->originStatus = $object->status;
+        return $object;
     }
 
     /**

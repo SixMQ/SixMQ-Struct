@@ -12,6 +12,13 @@ class Reply extends BaseServerStruct
      * @var boolean
      */
     public $success;
+
+    /**
+     * 错误信息
+     *
+     * @var string
+     */
+    public $error;
     
     /**
      * 标志符，请求时传入的原样返回

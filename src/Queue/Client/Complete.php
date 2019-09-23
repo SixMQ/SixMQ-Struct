@@ -6,13 +6,6 @@ use SixMQ\Struct\BaseClientStruct;
 class Complete extends BaseClientStruct
 {
     /**
-     * 队列ID
-     *
-     * @var string
-     */
-    public $queueId;
-    
-    /**
      * 消息ID
      *
      * @var string
@@ -33,10 +26,9 @@ class Complete extends BaseClientStruct
      */
     public $data;
 
-    public function __construct($queueId, $messageId, $success, $data = null)
+    public function __construct($messageId, $success, $data = null)
     {
         $this->action = 'queue.complete';
-        $this->queueId = $queueId;
         $this->messageId = $messageId;
         $this->success = $success;
         $this->data = $data;

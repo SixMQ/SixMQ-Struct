@@ -7,8 +7,9 @@ class Pop extends Reply
 {
     /**
      * 队列ID
+     * 支持传入数组，即支持多个队列ID。但每次还是只会返回一个消息。
      *
-     * @var string
+     * @var string|string[]
      */
     public $queueId;
     
